@@ -1,3 +1,5 @@
+"use client";
+
 export default function Terms() {
     return (
       <div className="container mx-auto max-w-3xl px-4 py-12 md:px-6 md:py-16">

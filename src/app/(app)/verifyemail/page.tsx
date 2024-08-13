@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function VerifyEmailPage() {
 
@@ -51,7 +51,6 @@ export default function VerifyEmailPage() {
       {error && (
         <div>
           <h2 className="text-2xl bg-red-500 text-black">Error</h2>
-
         </div>
       )}
     </div>

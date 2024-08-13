@@ -1,3 +1,5 @@
+"use client";
+
 export default function Privacy() {
     return (
       <div className="container mx-auto max-w-3xl py-12 px-4 md:px-0">
