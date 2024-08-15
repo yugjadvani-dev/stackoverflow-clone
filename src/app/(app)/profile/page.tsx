@@ -12,12 +12,18 @@ interface User {
   isAdmin: boolean;
   isVerified: boolean;
   username: string;
-  _id: string
+  _id: string;
 }
 
 export default function ProfilePage() {
-  const [data, setData] = useState<User>({});
-  console.log("data", data)
+  const [data, setData] = useState<User>({
+    email: '',
+    isAdmin: false,
+    isVerified: false,
+    username: '',
+    _id: '',
+  });
+  console.log("data", data);
   const router = useRouter();
   const logout = async () => {
     try {
@@ -36,16 +42,11 @@ export default function ProfilePage() {
       setData(res.data.data);
     };
 
-    getUserDetails()
-  }, [])
+    getUserDetails();
+  }, []);
 
   return (
     <>
-      {/* <button
-        onClick={logout}
-        className="bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >Logout</button> */}
-
       <div className="min-h-screen flex flex-col items-center justify-center w-full max-w-4xl mx-auto p-6 md:p-10">
         <div className="grid gap-6 md:grid-cols-[200px_1fr] items-start">
           <div className="flex flex-col items-center gap-4">
@@ -57,9 +58,9 @@ export default function ProfilePage() {
               <div className="text-xl font-bold">John Doe</div>
               <div className="text-sm text-muted-foreground">{`@${data.username}`}</div>
               <button
-        onClick={logout}
-        className="bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >Logout</button>
+                onClick={logout}
+                className="bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >Logout</button>
             </div>
           </div>
           <div className="grid gap-6">
@@ -175,7 +176,7 @@ function CheckIcon(props: any) {
     >
       <path d="M20 6 9 17l-5-5" />
     </svg>
-  )
+  );
 }
 
 function FileQuestionIcon(props: any) {
@@ -196,5 +197,5 @@ function FileQuestionIcon(props: any) {
       <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z" />
       <path d="M9.1 9a3 3 0 0 1 5.82 1c0 2-3 3-3 3" />
     </svg>
-  )
+  );
 }
