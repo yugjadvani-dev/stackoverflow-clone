@@ -13,6 +13,9 @@ const Footer = () => {
           <Link href="/privacy" className="text-xs hover:underline underline-offset-4" prefetch={false}>
             Privacy
           </Link>
+          <Link href="/faq" className="text-xs hover:underline underline-offset-4" prefetch={false}>
+            Faq's
+          </Link>
           <Link href="/contact" className="text-xs hover:underline underline-offset-4" prefetch={false}>
             Contact
           </Link>

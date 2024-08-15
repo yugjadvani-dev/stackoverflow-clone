@@ -17,13 +17,13 @@ const Header = () => {
           <Link href="/question" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
             Questions
           </Link>
-          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+          <Link href="/tags" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
             Tags
           </Link>
-          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+          <Link href="/users" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
             Users
           </Link>
-          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+          <Link href="/companies" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
             Companies
           </Link>
         </nav>

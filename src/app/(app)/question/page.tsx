@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
+import useQuestion from "@/hooks/useQuestion";
+import Link from "next/link";
 import { useMemo, useState } from "react"
 
 export default function Question() {
@@ -12,51 +14,9 @@ export default function Question() {
         status: "all",
         sort: "newest",
     })
-    const questions = useMemo(
-        () => [
-            {
-                id: 1,
-                title: "How do I create a React component?",
-                answers: 25,
-                views: 1234,
-                askedBy: "John Doe",
-                askedAt: "2 hours ago",
-            },
-            {
-                id: 2,
-                title: "What is the difference between let and const in JavaScript?",
-                answers: 50,
-                views: 2345,
-                askedBy: "Jane Smith",
-                askedAt: "1 day ago",
-            },
-            {
-                id: 3,
-                title: "How do I use CSS Grid to create a responsive layout?",
-                answers: 15,
-                views: 789,
-                askedBy: "Bob Johnson",
-                askedAt: "3 days ago",
-            },
-            {
-                id: 4,
-                title: "What is the purpose of the useEffect hook in React?",
-                answers: 30,
-                views: 1567,
-                askedBy: "Sarah Lee",
-                askedAt: "1 week ago",
-            },
-            {
-                id: 5,
-                title: "How do I implement authentication in a Node.js application?",
-                answers: 20,
-                views: 1123,
-                askedBy: "Mike Brown",
-                askedAt: "2 weeks ago",
-            },
-        ],
-        [],
-    )
+
+    const questions = useQuestion()
+    
     const filteredQuestions = useMemo(() => {
         let filtered = questions
         if (filter.status !== "all") {
@@ -72,10 +32,11 @@ export default function Question() {
         return filtered.filter((q) => q.title.toLowerCase().includes(search.toLowerCase()))
     }, [questions, filter, search])
     return (
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col min-h-screen">
             <header className="bg-background p-4 md:p-6 shadow">
                 <div className="container mx-auto flex items-center justify-between">
                     <h1 className="text-2xl font-bold">Questions</h1>
+                    <div className="flex items-center gap-4">
                     <div className="relative flex-1 max-w-md">
                         <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
                         <Input
@@ -85,6 +46,8 @@ export default function Question() {
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                         />
+                    </div>
+                    <Link href={'/question/ask'}>Ask Question</Link>
                     </div>
                 </div>
             </header>
@@ -142,7 +105,7 @@ export default function Question() {
                             <Card key={question.id} className="p-4 md:p-6">
                                 <div className="flex items-start justify-between">
                                     <div>
-                                        <h2 className="text-lg font-semibold">{question.title}</h2>
+                                        <Link href={`/question/${question.id.toString()}`} className="text-lg font-semibold">{question.title}</Link>
                                         <div className="text-sm text-muted-foreground">
                                             {question.answers} answers • {question.views} views
                                         </div>
