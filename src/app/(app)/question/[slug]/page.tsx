@@ -3,6 +3,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import useQuestion from "@/hooks/useQuestion";
+import { Questions } from "@/types";
 
 export default function QuestionDetail({
   params,
@@ -11,9 +12,9 @@ export default function QuestionDetail({
 }) {
   const { slug } = params;
 
-  const questions = useQuestion();
+  const questions: Questions[] = useQuestion();
 
-  const filterData = questions.find((item) => item.id === slug);
+  const filterData = questions.find((item) => item?.id?.toString() === slug);
 
   console.log("filterData", filterData);
   return (

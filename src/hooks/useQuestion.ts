@@ -1,13 +1,6 @@
 "use client";
 
-interface Questions {
-    id: number;
-    title: string;
-    answers: number;
-    views: number;
-    askedBy: string;
-    askedAt: string;
-}
+import { Questions } from "@/types";
 
 function useQuestion() {
     const questions: Questions[] = [
