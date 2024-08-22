@@ -1,14 +1,19 @@
-"use client"
+"use client";
 
-import { SetStateAction, useState } from "react"
-import { Input } from "@/components/ui/input"
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
-import { Pagination } from "@/components/ui/pagination"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Input } from "@/components/ui/input";
+import { Pagination } from "@/components/ui/pagination";
+import { SetStateAction, useState } from "react";
 
 export default function Faq() {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [currentPage, setCurrentPage] = useState(1)
-  const [usersPerPage, setUsersPerPage] = useState(12)
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [usersPerPage, setUsersPerPage] = useState(12);
   const faqs = [
     {
       id: 1,
@@ -142,19 +147,19 @@ export default function Faq() {
       answer:
         'To participate in the website\'s translation efforts, you can visit the "Translate" section of the website and contribute translations for the content in your native language. This helps to make the website accessible to a global audience.',
     },
-  ]
+  ];
   const filteredFaqs = faqs.filter(
     (faq) =>
       faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      faq.answer.toLowerCase().includes(searchQuery.toLowerCase()),
-  )
-  const indexOfLastFaq = currentPage * usersPerPage
-  const indexOfFirstFaq = indexOfLastFaq - usersPerPage
-  const currentFaqs = filteredFaqs.slice(indexOfFirstFaq, indexOfLastFaq)
-  const totalPages = Math.ceil(filteredFaqs.length / usersPerPage)
+      faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  const indexOfLastFaq = currentPage * usersPerPage;
+  const indexOfFirstFaq = indexOfLastFaq - usersPerPage;
+  const currentFaqs = filteredFaqs.slice(indexOfFirstFaq, indexOfLastFaq);
+  const totalPages = Math.ceil(filteredFaqs.length / usersPerPage);
   const handlePageChange = (pageNumber: SetStateAction<number>) => {
-    setCurrentPage(pageNumber)
-  }
+    setCurrentPage(pageNumber);
+  };
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
@@ -170,7 +175,9 @@ export default function Faq() {
         {currentFaqs.map((faq) => (
           <Accordion key={faq.id} type="single" collapsible>
             <AccordionItem value={`faq-${faq.id}`}>
-              <AccordionTrigger className="text-lg font-bold">{faq.question}</AccordionTrigger>
+              <AccordionTrigger className="text-lg font-bold">
+                {faq.question}
+              </AccordionTrigger>
               <AccordionContent>
                 <p className="text-gray-700">{faq.answer}</p>
               </AccordionContent>
@@ -179,8 +186,12 @@ export default function Faq() {
         ))}
       </div>
       <div className="mt-8 flex justify-center">
-        <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+        <Pagination
+        // currentPage={currentPage}
+        // totalPages={totalPages}
+        // onPageChange={handlePageChange}
+        />
       </div>
     </div>
-  )
+  );
 }

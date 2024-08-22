@@ -1,14 +1,20 @@
-"use client"
+"use client";
 
-import { SetStateAction, useState } from "react"
-import { Input } from "@/components/ui/input"
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
-import { Pagination } from "@/components/ui/pagination"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Pagination } from "@/components/ui/pagination";
+import { SetStateAction, useState } from "react";
 
 export default function Tags() {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [currentPage, setCurrentPage] = useState(1)
-  const [tagsPerPage, setTagsPerPage] = useState(12)
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [tagsPerPage, setTagsPerPage] = useState(12);
   const tags = [
     {
       id: 1,
@@ -21,25 +27,29 @@ export default function Tags() {
       id: 2,
       name: "python",
       questionCount: 987654,
-      description: "For questions about the Python programming language, including syntax, libraries, and frameworks.",
+      description:
+        "For questions about the Python programming language, including syntax, libraries, and frameworks.",
     },
     {
       id: 3,
       name: "java",
       questionCount: 876543,
-      description: "For questions about the Java programming language, including syntax, libraries, and frameworks.",
+      description:
+        "For questions about the Java programming language, including syntax, libraries, and frameworks.",
     },
     {
       id: 4,
       name: "c#",
       questionCount: 765432,
-      description: "For questions about the C# programming language, including syntax, libraries, and frameworks.",
+      description:
+        "For questions about the C# programming language, including syntax, libraries, and frameworks.",
     },
     {
       id: 5,
       name: "php",
       questionCount: 654321,
-      description: "For questions about the PHP programming language, including syntax, libraries, and frameworks.",
+      description:
+        "For questions about the PHP programming language, including syntax, libraries, and frameworks.",
     },
     {
       id: 6,
@@ -87,13 +97,15 @@ export default function Tags() {
       id: 12,
       name: "ruby",
       questionCount: 87654,
-      description: "For questions about the Ruby programming language, including syntax, libraries, and frameworks.",
+      description:
+        "For questions about the Ruby programming language, including syntax, libraries, and frameworks.",
     },
     {
       id: 13,
       name: "swift",
       questionCount: 76543,
-      description: "For questions about the Swift programming language, including iOS and macOS development.",
+      description:
+        "For questions about the Swift programming language, including iOS and macOS development.",
     },
     {
       id: 14,
@@ -116,15 +128,17 @@ export default function Tags() {
       description:
         "For questions about the Rust programming language, including memory safety, concurrency, and systems programming.",
     },
-  ]
-  const filteredTags = tags.filter((tag) => tag.name.toLowerCase().includes(searchQuery.toLowerCase()))
-  const indexOfLastTag = currentPage * tagsPerPage
-  const indexOfFirstTag = indexOfLastTag - tagsPerPage
-  const currentTags = filteredTags.slice(indexOfFirstTag, indexOfLastTag)
-  const totalPages = Math.ceil(filteredTags.length / tagsPerPage)
+  ];
+  const filteredTags = tags.filter((tag) =>
+    tag.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  const indexOfLastTag = currentPage * tagsPerPage;
+  const indexOfFirstTag = indexOfLastTag - tagsPerPage;
+  const currentTags = filteredTags.slice(indexOfFirstTag, indexOfLastTag);
+  const totalPages = Math.ceil(filteredTags.length / tagsPerPage);
   const handlePageChange = (pageNumber: SetStateAction<number>) => {
-    setCurrentPage(pageNumber)
-  }
+    setCurrentPage(pageNumber);
+  };
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
@@ -141,7 +155,9 @@ export default function Tags() {
           <Card key={tag.id} className="bg-white shadow-md">
             <CardHeader>
               <CardTitle className="text-lg font-bold">{tag.name}</CardTitle>
-              <CardDescription className="text-gray-500">{tag.questionCount} questions</CardDescription>
+              <CardDescription className="text-gray-500">
+                {tag.questionCount} questions
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-gray-700">{tag.description}</p>
@@ -150,8 +166,12 @@ export default function Tags() {
         ))}
       </div>
       <div className="mt-8 flex justify-center">
-        <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+        <Pagination
+        // currentPage={currentPage}
+        // totalPages={totalPages}
+        // onPageChange={handlePageChange}
+        />
       </div>
     </div>
-  )
+  );
 }
