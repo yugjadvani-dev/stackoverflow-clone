@@ -1,22 +1,28 @@
-"use client"
+"use client";
 
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import useQuestion from "@/hooks/useQuestion";
 
-export default function QuestionDetail({ params }: { params: { slug: string; }; }) {
+export default function QuestionDetail({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const { slug } = params;
 
-  const questions = useQuestion()
+  const questions = useQuestion();
 
-  const filterData = questions.find((item) => item.id === slug)
+  const filterData = questions.find((item) => item.id === slug);
 
-  console.log("filterData", filterData)
+  console.log("filterData", filterData);
   return (
     <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
         <div className="px-6 py-5 border-b">
-          <h1 className="text-2xl font-bold">How do I create a React component?</h1>
+          <h1 className="text-2xl font-bold">
+            How do I create a React component?
+          </h1>
           <div className="flex items-center mt-2 text-sm text-gray-500">
             <div className="flex items-center">
               <EyeIcon className="w-4 h-4 mr-1" />
@@ -41,8 +47,9 @@ export default function QuestionDetail({ params }: { params: { slug: string; }; 
         </div>
         <div className="px-6 py-5">
           <p>
-            I'm new to React and I'm trying to create my first component. Can someone please explain the steps to create
-            a React component?
+            I&apos;m new to React and I&apos;m trying to create my first
+            component. Can someone please explain the steps to create a React
+            component?
           </p>
         </div>
         <div className="px-6 py-5 border-t">
@@ -60,8 +67,8 @@ export default function QuestionDetail({ params }: { params: { slug: string; }; 
                   <span>1 hour ago</span>
                 </div>
                 <p className="mt-2">
-                  To create a React component, you can use either a function or a class. Here's an example of a
-                  functional component:
+                  To create a React component, you can use either a function or
+                  a class. Here&apos;s an example of a functional component:
                 </p>
                 <pre className="bg-gray-100 rounded-lg p-4 mt-2">
                   <code>{`
@@ -87,7 +94,9 @@ function MyComponent() {
                   <span className="mx-2">·</span>
                   <span>30 minutes ago</span>
                 </div>
-                <p className="mt-2">You can also create a component using a class:</p>
+                <p className="mt-2">
+                  You can also create a component using a class:
+                </p>
                 <pre className="bg-gray-100 rounded-lg p-4 mt-2">
                   <code>{`
 class MyComponent extends React.Component {
@@ -107,11 +116,19 @@ class MyComponent extends React.Component {
         </div>
         <div className="px-6 py-5 border-t flex items-center justify-between">
           <div className="flex items-center">
-            <Button variant="ghost" size="icon" className="text-gray-500 hover:text-gray-700">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-gray-500 hover:text-gray-700"
+            >
               <ThumbsUpIcon className="w-5 h-5" />
             </Button>
             <span className="text-gray-500 ml-2">42</span>
-            <Button variant="ghost" size="icon" className="text-gray-500 hover:text-gray-700 ml-4">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-gray-500 hover:text-gray-700 ml-4"
+            >
               <ThumbsDownIcon className="w-5 h-5" />
             </Button>
             <span className="text-gray-500 ml-2">12</span>
@@ -120,10 +137,10 @@ class MyComponent extends React.Component {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-function ClockIcon(props:any) {
+function ClockIcon(props: any) {
   return (
     <svg
       {...props}
@@ -140,11 +157,10 @@ function ClockIcon(props:any) {
       <circle cx="12" cy="12" r="10" />
       <polyline points="12 6 12 12 16 14" />
     </svg>
-  )
+  );
 }
 
-
-function EyeIcon(props:any) {
+function EyeIcon(props: any) {
   return (
     <svg
       {...props}
@@ -161,11 +177,10 @@ function EyeIcon(props:any) {
       <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
       <circle cx="12" cy="12" r="3" />
     </svg>
-  )
+  );
 }
 
-
-function MessageCircleIcon(props:any) {
+function MessageCircleIcon(props: any) {
   return (
     <svg
       {...props}
@@ -181,11 +196,10 @@ function MessageCircleIcon(props:any) {
     >
       <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
     </svg>
-  )
+  );
 }
 
-
-function ThumbsDownIcon(props:any) {
+function ThumbsDownIcon(props: any) {
   return (
     <svg
       {...props}
@@ -202,11 +216,10 @@ function ThumbsDownIcon(props:any) {
       <path d="M17 14V2" />
       <path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22h0a3.13 3.13 0 0 1-3-3.88Z" />
     </svg>
-  )
+  );
 }
 
-
-function ThumbsUpIcon(props:any) {
+function ThumbsUpIcon(props: any) {
   return (
     <svg
       {...props}
@@ -223,5 +236,5 @@ function ThumbsUpIcon(props:any) {
       <path d="M7 10v12" />
       <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z" />
     </svg>
-  )
+  );
 }
