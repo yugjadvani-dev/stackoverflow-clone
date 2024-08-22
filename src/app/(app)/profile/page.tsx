@@ -17,19 +17,19 @@ interface User {
 
 export default function ProfilePage() {
   const [data, setData] = useState<User>({
-    email: '',
+    email: "",
     isAdmin: false,
     isVerified: false,
-    username: '',
-    _id: '',
+    username: "",
+    _id: "",
   });
   console.log("data", data);
   const router = useRouter();
   const logout = async () => {
     try {
-      await axios.get('/api/users/logout');
-      toast.success('Logout successful');
-      router.push('/login');
+      await axios.get("/api/users/logout");
+      toast.success("Logout successful");
+      router.push("/login");
     } catch (error: any) {
       console.log(error.message);
       toast.error(error.message);
@@ -38,7 +38,7 @@ export default function ProfilePage() {
 
   useEffect(() => {
     const getUserDetails = async () => {
-      const res = await axios.get('/api/users/me');
+      const res = await axios.get("/api/users/me");
       setData(res.data.data);
     };
 
@@ -60,23 +60,30 @@ export default function ProfilePage() {
               <button
                 onClick={logout}
                 className="bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              >Logout</button>
+              >
+                Logout
+              </button>
             </div>
           </div>
           <div className="grid gap-6">
             <div className="grid gap-2">
-              <div className="text-sm font-medium text-muted-foreground">Bio</div>
+              <div className="text-sm font-medium text-muted-foreground">
+                Bio
+              </div>
               <div className="text-base">
-                I'm a software engineer with a passion for building scalable and efficient web applications. I've been an
-                active member of the StackOverflow community for several years, helping others and learning from the
-                amazing community.
+                I&apos;m a software engineer with a passion for building
+                scalable and efficient web applications. I&apos;ve been an
+                active member of the StackOverflow community for several years,
+                helping others and learning from the amazing community.
               </div>
             </div>
             <div className="grid gap-4">
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div className="grid gap-1">
                   <div className="text-2xl font-bold">12,345</div>
-                  <div className="text-sm text-muted-foreground">Reputation</div>
+                  <div className="text-sm text-muted-foreground">
+                    Reputation
+                  </div>
                 </div>
                 <div className="grid gap-1">
                   <div className="text-2xl font-bold">78</div>
@@ -90,7 +97,9 @@ export default function ProfilePage() {
               <Separator />
               <div className="grid gap-4">
                 <div className="grid gap-2">
-                  <div className="text-sm font-medium text-muted-foreground">Top Questions</div>
+                  <div className="text-sm font-medium text-muted-foreground">
+                    Top Questions
+                  </div>
                   <div className="grid gap-2">
                     <Link
                       href="#"
@@ -98,7 +107,9 @@ export default function ProfilePage() {
                       prefetch={false}
                     >
                       <FileQuestionIcon className="w-5 h-5 text-muted-foreground" />
-                      <span>How to optimize a React component for performance?</span>
+                      <span>
+                        How to optimize a React component for performance?
+                      </span>
                     </Link>
                     <Link
                       href="#"
@@ -106,7 +117,10 @@ export default function ProfilePage() {
                       prefetch={false}
                     >
                       <FileQuestionIcon className="w-5 h-5 text-muted-foreground" />
-                      <span>What is the difference between let and const in JavaScript?</span>
+                      <span>
+                        What is the difference between let and const in
+                        JavaScript?
+                      </span>
                     </Link>
                     <Link
                       href="#"
@@ -114,21 +128,17 @@ export default function ProfilePage() {
                       prefetch={false}
                     >
                       <FileQuestionIcon className="w-5 h-5 text-muted-foreground" />
-                      <span>How to implement a custom pagination component in React?</span>
+                      <span>
+                        How to implement a custom pagination component in React?
+                      </span>
                     </Link>
                   </div>
                 </div>
                 <div className="grid gap-2">
-                  <div className="text-sm font-medium text-muted-foreground">Top Answers</div>
+                  <div className="text-sm font-medium text-muted-foreground">
+                    Top Answers
+                  </div>
                   <div className="grid gap-2">
-                    <Link
-                      href="#"
-                      className="flex items-center gap-2 text-base font-medium hover:underline"
-                      prefetch={false}
-                    >
-                      <CheckIcon className="w-5 h-5 text-muted-foreground" />
-                      <span>Explained the difference between async/await and promises in JavaScript.</span>
-                    </Link>
                     <Link
                       href="#"
                       className="flex items-center gap-2 text-base font-medium hover:underline"
@@ -136,7 +146,8 @@ export default function ProfilePage() {
                     >
                       <CheckIcon className="w-5 h-5 text-muted-foreground" />
                       <span>
-                        Provided a detailed solution to the problem of implementing a debounce function in JavaScript.
+                        Explained the difference between async/await and
+                        promises in JavaScript.
                       </span>
                     </Link>
                     <Link
@@ -146,7 +157,19 @@ export default function ProfilePage() {
                     >
                       <CheckIcon className="w-5 h-5 text-muted-foreground" />
                       <span>
-                        Explained the use of the useEffect hook in React and how to properly manage side effects.
+                        Provided a detailed solution to the problem of
+                        implementing a debounce function in JavaScript.
+                      </span>
+                    </Link>
+                    <Link
+                      href="#"
+                      className="flex items-center gap-2 text-base font-medium hover:underline"
+                      prefetch={false}
+                    >
+                      <CheckIcon className="w-5 h-5 text-muted-foreground" />
+                      <span>
+                        Explained the use of the useEffect hook in React and how
+                        to properly manage side effects.
                       </span>
                     </Link>
                   </div>
