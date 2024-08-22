@@ -1,16 +1,22 @@
-"use client"
+"use client";
 
-import { SetStateAction, useState } from "react"
-import { Input } from "@/components/ui/input"
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-import Link from "next/link"
-import { Pagination } from "@/components/ui/pagination"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Pagination } from "@/components/ui/pagination";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function Companies() {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [currentPage, setCurrentPage] = useState(1)
-  const [usersPerPage, setUsersPerPage] = useState(12)
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [usersPerPage, setUsersPerPage] = useState(12);
   const companies = [
     {
       id: 1,
@@ -78,19 +84,22 @@ export default function Companies() {
       description:
         "Oscorp Industries is a pioneering biotechnology company that is at the forefront of cutting-edge research and development in the field of genetic engineering and molecular biology. With a team of world-class scientists and researchers, Oscorp is working to develop innovative solutions that have the potential to transform the way we approach healthcare and disease treatment.",
     },
-  ]
+  ];
   const filteredCompanies = companies.filter(
     (company) =>
       company.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      company.industry.toLowerCase().includes(searchQuery.toLowerCase()),
-  )
-  const indexOfLastCompany = currentPage * usersPerPage
-  const indexOfFirstCompany = indexOfLastCompany - usersPerPage
-  const currentCompanies = filteredCompanies.slice(indexOfFirstCompany, indexOfLastCompany)
-  const totalPages = Math.ceil(filteredCompanies.length / usersPerPage)
-  const handlePageChange = (pageNumber: SetStateAction<number>) => {
-    setCurrentPage(pageNumber)
-  }
+      company.industry.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  const indexOfLastCompany = currentPage * usersPerPage;
+  const indexOfFirstCompany = indexOfLastCompany - usersPerPage;
+  const currentCompanies = filteredCompanies.slice(
+    indexOfFirstCompany,
+    indexOfLastCompany
+  );
+  // const totalPages = Math.ceil(filteredCompanies.length / usersPerPage);
+  // const handlePageChange = (pageNumber: SetStateAction<number>) => {
+  //   setCurrentPage(pageNumber);
+  // };
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
@@ -109,11 +118,17 @@ export default function Companies() {
               <div className="flex items-center">
                 <Avatar className="mr-4">
                   <AvatarImage src="/placeholder-user.jpg" alt={company.name} />
-                  <AvatarFallback>{company.name.charAt(0).toUpperCase()}</AvatarFallback>
+                  <AvatarFallback>
+                    {company.name.charAt(0).toUpperCase()}
+                  </AvatarFallback>
                 </Avatar>
                 <div>
-                  <CardTitle className="text-lg font-bold">{company.name}</CardTitle>
-                  <CardDescription className="text-gray-500">{company.industry}</CardDescription>
+                  <CardTitle className="text-lg font-bold">
+                    {company.name}
+                  </CardTitle>
+                  <CardDescription className="text-gray-500">
+                    {company.industry}
+                  </CardDescription>
                 </div>
               </div>
             </CardHeader>
@@ -121,7 +136,9 @@ export default function Companies() {
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center">
                   <CalendarIcon className="w-5 h-5 mr-2 text-primary" />
-                  <span className="text-gray-700 font-medium">{company.founded}</span>
+                  <span className="text-gray-700 font-medium">
+                    {company.founded}
+                  </span>
                 </div>
                 <div className="flex items-center">
                   <UsersIcon className="w-5 h-5 mr-2 text-primary" />
@@ -134,7 +151,12 @@ export default function Companies() {
               </div>
               <p className="text-gray-700 mt-4">{company.description}</p>
               <div className="mt-4">
-                <Link href="#" target="_blank" className="text-primary hover:underline" prefetch={false}>
+                <Link
+                  href="#"
+                  target="_blank"
+                  className="text-primary hover:underline"
+                  prefetch={false}
+                >
                   Visit Website
                 </Link>
               </div>
@@ -143,13 +165,17 @@ export default function Companies() {
         ))}
       </div>
       <div className="mt-8 flex justify-center">
-        <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+        <Pagination
+        // currentPage={currentPage}
+        // totalPages={totalPages}
+        // onPageChange={handlePageChange}
+        />
       </div>
     </div>
-  )
+  );
 }
 
-function CalendarIcon(props:any) {
+function CalendarIcon(props: any) {
   return (
     <svg
       {...props}
@@ -168,11 +194,10 @@ function CalendarIcon(props:any) {
       <rect width="18" height="18" x="3" y="4" rx="2" />
       <path d="M3 10h18" />
     </svg>
-  )
+  );
 }
 
-
-function DollarSignIcon(props:any) {
+function DollarSignIcon(props: any) {
   return (
     <svg
       {...props}
@@ -189,11 +214,10 @@ function DollarSignIcon(props:any) {
       <line x1="12" x2="12" y1="2" y2="22" />
       <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
     </svg>
-  )
+  );
 }
 
-
-function UsersIcon(props:any) {
+function UsersIcon(props: any) {
   return (
     <svg
       {...props}
@@ -212,5 +236,5 @@ function UsersIcon(props:any) {
       <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
       <path d="M16 3.13a4 4 0 0 1 0 7.75" />
     </svg>
-  )
+  );
 }
