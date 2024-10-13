@@ -1,9 +1,13 @@
-"use client";
-
+import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
+
+  const cookieStore = cookies();
+  const token = cookieStore.get('token');
+  console.log("token", token);
+
   return (
     <div className="flex flex-col">
       <section className="w-full flex items-center justify-center  min-h-[100dvh]">
@@ -20,22 +24,25 @@ export default function Home() {
                   their careers.
                 </p>
               </div>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Link
-                  href="/signup"
-                  className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                  prefetch={false}
-                >
-                  Sign Up
-                </Link>
-                <Link
-                  href="/login"
-                  className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                  prefetch={false}
-                >
-                  Log In
-                </Link>
-              </div>
+              {token ?
+                null :
+                <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                  <Link
+                    href="/signup"
+                    className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                    prefetch={false}
+                  >
+                    Sign Up
+                  </Link>
+                  <Link
+                    href="/login"
+                    className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                    prefetch={false}
+                  >
+                    Log In
+                  </Link>
+                </div>
+              }
             </div>
             <Image
               src="/home.jpg"

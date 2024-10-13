@@ -55,8 +55,8 @@ export default function ProfilePage() {
               <AvatarFallback>JD</AvatarFallback>
             </Avatar>
             <div className="grid gap-1 text-center">
-              <div className="text-xl font-bold">John Doe</div>
-              <div className="text-sm text-muted-foreground">{`@${data.username}`}</div>
+              {/* <div className="text-xl font-bold">John Doe</div> */}
+              <div className="text-sm text-muted-foreground">{`@${data?.username}`}</div>
               <button
                 onClick={logout}
                 className="bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
